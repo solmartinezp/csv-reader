@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// Function to parse CSV string
+
 function parseCSV(csvString, hasHeaders = true) {
-    const rows = csvString.trim().split(/\n|\r\n/); // Splitting by newline
+    const rows = csvString.trim().split(/\n|\r\n/); 
     const parsedData = rows.map(row => row.split(/[,;]/).map(field => {
         const trimmedField = field.trim();
-        // Convert to number if it's a numeric value
+
         return !isNaN(Number(trimmedField)) && trimmedField !== '' ? Number(trimmedField) : trimmedField;
     }));
     if (hasHeaders) {

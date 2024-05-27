@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// Function to get all unique keys from the array of objects
+
 function getAllKeys(outputArray) {
     const keys = new Set();
     outputArray.forEach(obj => {

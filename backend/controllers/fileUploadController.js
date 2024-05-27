@@ -9,11 +9,9 @@ const objectTransformer_1 = __importDefault(require("../utils/objectTransformer"
 const keyExtractor_1 = __importDefault(require("../utils/keyExtractor"));
 // Endpoint to upload CSV file
 function uploadCSV(req, res) {
-    // Check if 'file' property exists on the request
     if (!req.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
-    // Extract CSV data from request
     const csv = req.file.buffer.toString('utf8');
     // Parse CSV string into an array of objects
     const data = (0, csvParser_1.default)(csv);
@@ -60,7 +58,6 @@ function uploadCSV(req, res) {
             });
         });
     });
-    // Return response if no error occurred (this line is not strictly necessary)
     return res;
 }
 exports.default = uploadCSV;

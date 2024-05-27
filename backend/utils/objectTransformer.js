@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// Function to transform semicolon-separated key-value pairs into an object with separate keys
+
 function transformObject(inputObject) {
     const keys = Object.keys(inputObject);
     const values = Object.values(inputObject)[0].split(';');

@@ -4,29 +4,25 @@ import parseCSV from '../utils/csvParser';
 import transformObject from '../utils/objectTransformer';
 import getAllKeys from '../utils/keyExtractor';
 
-// Extend the Express namespace to include the 'file' property
 declare global {
   namespace Express {
     interface Request {
-      file?: Express.Multer.File; // Make 'file' property optional
+      file?: Express.Multer.File;
     }
   }
 }
 
 // Endpoint to upload CSV file
 function uploadCSV(req: Request, res: Response<any, Record<string, any>>): Response<any, Record<string, any>> {
-  // Check if 'file' property exists on the request
   if (!req.file) {
     return res.status(400).json({ message: 'No file uploaded' });
   }
 
-  // Extract CSV data from request
   const csv: string = req.file.buffer.toString('utf8');
 
   // Parse CSV string into an array of objects
   const data: any[] = parseCSV(csv);
 
-  // Transform objects to match database schema
   const outputArray: any[] = data.map(transformObject);
 
   // Get all unique keys from the array of objects
@@ -75,7 +71,6 @@ function uploadCSV(req: Request, res: Response<any, Record<string, any>>): Respo
     });
   });
 
-  // Return response if no error occurred (this line is not strictly necessary)
   return res;
 }
 

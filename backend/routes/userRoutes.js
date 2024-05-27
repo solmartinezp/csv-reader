@@ -9,7 +9,7 @@ const router = express_1.default.Router();
 // Endpoint to search users
 router.get('/api/users', (req, res) => {
     const searchTerm = req.query.q;
-    // Get the column names dynamically
+
     dbConfig_1.default.all(`PRAGMA table_info(users)`, (err, columns) => {
         if (err) {
             return res.status(500).json({ message: 'Error retrieving column information' });
@@ -17,7 +17,7 @@ router.get('/api/users', (req, res) => {
         const columnNames = columns.map(col => col.name).join(', ');
         let query = `SELECT ${columnNames} FROM users`;
         if (searchTerm) {
-            // If search term is provided, add WHERE clause to search in all columns
+
             query += ` WHERE ${columns.map(col => `${col.name} LIKE '%${searchTerm}%'`).join(' OR ')}`;
         }
         dbConfig_1.default.all(query, (err, rows) => {

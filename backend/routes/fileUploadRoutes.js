@@ -17,14 +17,12 @@ const multer_1 = __importDefault(require("multer"));
 const fileUploadController_1 = __importDefault(require("../controllers/fileUploadController"));
 const router = express_1.default.Router();
 const upload = (0, multer_1.default)();
-// Define an async request handler function that wraps uploadCSV
+
 const handleUploadCSV = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // Call uploadCSV and await its completion
         yield (0, fileUploadController_1.default)(req, res);
     }
     catch (error) {
-        // Pass any caught errors to the Express error handler
         next(error);
     }
 });
