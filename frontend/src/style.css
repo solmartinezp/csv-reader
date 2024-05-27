@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position:relative;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #e9f5ed;
+  animation: slideUpFadeIn 1s ease-out forwards;
+}
+
+h1 {
+  text-align: center;
+}
+
+.mainCard {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 40px;
+}
+
+.noMatch {
+  padding-top: 20px;
+  text-align: center;
+  animation: slideUpFadeIn 1s ease-out forwards;
+}
+
+
+@keyframes slideUpFadeIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hidden {
+  opacity: 0;
+}
